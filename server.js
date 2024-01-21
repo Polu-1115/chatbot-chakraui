@@ -1,4 +1,3 @@
-// server.js (Node.js with Express and CORS)
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
@@ -8,13 +7,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const apiKey = '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'; // Replace with your OpenAI API key
+const apiKey = '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';
 
 app.post('/api/chatbot', async (req, res) => {
   const userMessage = req.body.message;
 
   try {
-    // Make a request to OpenAI API here
+    //openai api called
     const openaiResponse = await fetchOpenAIResponse(userMessage, apiKey);
     res.json({ message: openaiResponse.choices[0].message.content.trim() });
   } catch (error) {
@@ -24,14 +23,14 @@ app.post('/api/chatbot', async (req, res) => {
 });
 
 async function fetchOpenAIResponse(userMessage, apiKey) {
-  const apiUrl = 'https://api.openai.com/v1/chat/completions'; // Updated endpoint
+  const apiUrl = 'https://api.openai.com/v1/chat/completions';
 
   const headers = {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${apiKey}`,
   };
 
-  // Construct a conversation with alternating user and assistant messages
+  
   const conversation = [
     { role: 'system', content: 'You are a helpful assistant designed to output JSON.' },
     { role: 'user', content: userMessage },
@@ -39,7 +38,7 @@ async function fetchOpenAIResponse(userMessage, apiKey) {
 
   const data = {
     messages: conversation,
-    model: 'gpt-3.5-turbo-1106', // Update the model if necessary
+    model: 'gpt-3.5-turbo-1106',
     response_format: { type: 'json_object' },
     max_tokens: 150,
     temperature: 0.7,

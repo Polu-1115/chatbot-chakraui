@@ -1,4 +1,3 @@
-// Chatbox.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { VStack, Box, Flex, Input, Button, Text, Img } from '@chakra-ui/react';
 import MessageBubble from './MessageBubble';
@@ -23,7 +22,6 @@ const Chatbox = ({ messages, sendMessage }) => {
     sendMessage(inputValue);
     setInputValue('');
 
-    // Hide the default message after the first user message is sent
     if (showDefaultMessage) {
       setShowDefaultMessage(true);
     }
@@ -37,10 +35,10 @@ const Chatbox = ({ messages, sendMessage }) => {
   };
 
   useEffect(() => {
-    // Scroll to the bottom of the chatbox
+
     chatboxRef.current.scrollTop = chatboxRef.current.scrollHeight;
 
-    // Focus on the input only if there are user messages
+
     if (messages.length > 0) {
       inputRef.current.focus();
     }
@@ -56,7 +54,7 @@ const Chatbox = ({ messages, sendMessage }) => {
       </Box>
 
       <VStack
-        w={['95%', '80%', '60%', '40%']}  // Adjusted width for different screen sizes
+        w={['95%', '80%', '60%', '40%']}
         h="80vh"
         mx="auto"
         mt="2vh"
