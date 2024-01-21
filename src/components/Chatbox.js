@@ -50,23 +50,22 @@ const Chatbox = ({ messages, sendMessage }) => {
     <VStack>
       <Box display="flex" alignItems="center" justifyContent="center" mt={6}>
         <Box align='center'>
-          <Img src={botAvatar} alt='bot-avatar' width='7%' />
-          <Text fontWeight='600' fontSize='20px' ml={2}>Ask OpenAI ChatBot!</Text>
+          <Img src={botAvatar} alt='bot-avatar' width={['15%', '7%']} />
+          <Text fontWeight='600' fontSize={['lg', '20px']} ml={2}>Ask OpenAI ChatBot!</Text>
         </Box>
       </Box>
 
       <VStack
-        w="32%"  // Reduced width by 20%
+        w={['95%', '80%', '60%', '40%']}  // Adjusted width for different screen sizes
         h="80vh"
         mx="auto"
         mt="2vh"
         p={4}
         bg="#FCF9F9"
         borderRadius="md"
-        
         position="relative"
         overflowY="auto"
-        boxShadow= "0 5px 20px 0px rgba(0, 0, 0, 0.5)"
+        boxShadow="0 5px 20px 0px rgba(0, 0, 0, 0.5)"
         ref={chatboxRef}
       >
         {/* Default bot message */}
@@ -90,8 +89,9 @@ const Chatbox = ({ messages, sendMessage }) => {
         {/* Empty space after the chatbox ends */}
         <Box flex="1" />
 
-        <Flex align="center" mt={4}>
+        <Flex align="center" mt={4} width='100%'>
           <Input
+            
             backgroundColor='#ffffff'
             ref={inputRef}
             placeholder="Type your message..."
